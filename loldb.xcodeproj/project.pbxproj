@@ -131,6 +131,7 @@
 		68B457F31B100287007A826C /* Ziggs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457CF1B100287007A826C /* Ziggs.jpg */; };
 		68B457F41B100287007A826C /* Zilean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457D01B100287007A826C /* Zilean.jpg */; };
 		68B457F51B100287007A826C /* Zyra.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457D11B100287007A826C /* Zyra.jpg */; };
+		68E616B51B1E57AF00DBE6AF /* Champion.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E616B41B1E57AF00DBE6AF /* Champion.m */; };
 		68F02B771B0FB7F400A24651 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02B761B0FB7F400A24651 /* main.m */; };
 		68F02B7A1B0FB7F400A24651 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02B791B0FB7F400A24651 /* AppDelegate.m */; };
 		68F02B7D1B0FB7F400A24651 /* loldb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68F02B7B1B0FB7F400A24651 /* loldb.xcdatamodeld */; };
@@ -292,6 +293,8 @@
 		68B457CF1B100287007A826C /* Ziggs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ziggs.jpg; sourceTree = "<group>"; };
 		68B457D01B100287007A826C /* Zilean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zilean.jpg; sourceTree = "<group>"; };
 		68B457D11B100287007A826C /* Zyra.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zyra.jpg; sourceTree = "<group>"; };
+		68E616B31B1E57AF00DBE6AF /* Champion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Champion.h; sourceTree = "<group>"; };
+		68E616B41B1E57AF00DBE6AF /* Champion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Champion.m; sourceTree = "<group>"; };
 		68F02B711B0FB7F400A24651 /* loldb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loldb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F02B751B0FB7F400A24651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F02B761B0FB7F400A24651 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -350,6 +353,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68E616B21B1E577300DBE6AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68E616B31B1E57AF00DBE6AF /* Champion.h */,
+				68E616B41B1E57AF00DBE6AF /* Champion.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		68F02B681B0FB7F400A24651 = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +383,7 @@
 		68F02B731B0FB7F400A24651 /* loldb */ = {
 			isa = PBXGroup;
 			children = (
+				68E616B21B1E577300DBE6AF /* Model */,
 				68F02BC01B0FBC3200A24651 /* images */,
 				68F02BB61B0FBC0800A24651 /* TableView */,
 				68F02B9D1B0FB98400A24651 /* CollectionView */,
@@ -823,6 +836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E616B51B1E57AF00DBE6AF /* Champion.m in Sources */,
 				68F02BEA1B0FDC9F00A24651 /* MyTableViewCell.m in Sources */,
 				68F02B7D1B0FB7F400A24651 /* loldb.xcdatamodeld in Sources */,
 				68F02B7A1B0FB7F400A24651 /* AppDelegate.m in Sources */,

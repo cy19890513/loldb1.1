@@ -29,7 +29,7 @@
 		}
 		else
 		{
-			$query = "SELECT * FROM cities";
+			$query = "SELECT * FROM winRates";
 			$resultset = mysql_query($query, $connection);
 			
 			$records = array();

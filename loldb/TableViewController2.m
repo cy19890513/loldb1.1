@@ -8,18 +8,28 @@
 
 #import "TableViewController2.h"
 #import "MyTableViewCell.h"
+#import "Champion.h"
+
 @interface TableViewController2 (){
-    NSMutableArray *champions;
-    NSMutableArray *championsWinRate;
+    //NSMutableArray *champions;
+    //NSMutableArray *championsWinRate;
 }
 	
 @end
 
+#define getDataURL @"http://www.boostshore.com/loldb/winRate.php"
+
 @implementation TableViewController2
+@synthesize json, championsArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //set the title
+    self.title =@"WIN RATES";
+    
+    [self retriveData];
+    /*
     champions = [[NSMutableArray alloc] init];
     [champions addObject:@"Annie"];
     [champions addObject:@"Braum"];
@@ -44,6 +54,7 @@
     [championsWinRate addObject:@"51%"];
     [championsWinRate addObject:@"51%"];
     [championsWinRate addObject:@"51%"];
+     */
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -67,7 +78,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [champions count];
+    return [championsArray count];
 }
 
 
@@ -78,8 +89,11 @@
     UILabel *nameLabel = (UILabel *)[self.tableView viewWithTag:202];
     UILabel *rateLabel = (UILabel *)[self.tableView viewWithTag:203];
     
-    nameLabel.text = [champions objectAtIndex:indexPath.row];
-    rateLabel.text = [championsWinRate objectAtIndex:indexPath.row];
+    //nameLabel.text = [champions objectAtIndex:indexPath.row];
+    //rateLabel.text = [championsWinRate objectAtIndex:indexPath.row];
+    nameLabel.text = [[championsArray objectAtIndex:indexPath.row] championName];
+    rateLabel.text = [[championsArray objectAtIndex:indexPath.row] championWinRate];
+    
     
     NSString *imageToLoad = [NSString stringWithFormat:@"%@.jpg", nameLabel.text];
     imageView.image = [UIImage imageNamed:imageToLoad];
@@ -92,6 +106,30 @@
     // Configure the cell...
     
     return cell;
+}
+
+#pragma mark -Methods
+-(void) retriveData
+{
+    NSURL *url = [NSURL URLWithString:getDataURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    //Set up our champions array
+    championsArray = [[NSMutableArray alloc]init];
+    
+    for (int i=0; i < json.count; i++ )
+    {
+        //Create champion objec
+        NSString *cID = [[json objectAtIndex:i]objectForKey:@"id"];
+        NSString *cName = [[json objectAtIndex:i]objectForKey:@"championName"];
+        NSString *cWinRate = [[json objectAtIndex:i]objectForKey:@"winRates"];
+        
+        Champion *tempChampion = [[Champion alloc] initWithChampionId:cID andChampionName:cName andChampionWinRate:cWinRate];
+        [championsArray addObject:tempChampion];
+    }
+    
+    [self.tableView reloadData];//?!#@!?
 }
 
 
