@@ -11,5 +11,12 @@
 @interface ViewController : UICollectionViewController
 
 
+@property(nonatomic, strong) NSMutableArray * json;
+@property(nonatomic, strong) NSMutableArray * championsArray;
+
+#pragma mark -Methods
+-(void) retriveData;
+
+
 @end
 

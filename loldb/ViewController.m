@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "Cell.h"
+#import "Champion.h"
+
 
 @interface ViewController (){
 
@@ -19,12 +21,15 @@ NSString *kDetailedViewControllerID = @"DetailView";    // view controller story
 NSString *kCellID = @"cellID";                          // UICollectionViewCell storyboard id
 NSMutableArray *champions;
 
+#define getDataURL @"http://www.boostshore.com/loldb/champions.php"
 
 @implementation ViewController
+@synthesize json, championsArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    /*
     champions = [[NSMutableArray alloc] initWithObjects:@"Aatrox",@"Ahri",@"Akali",@"Amumu",@"Anivia",@"Annie",@"Ashe",@"Azir",@"Bard",
 @"Blitzcrank",@"Brand",@"Braum",@"Caitlyn",@"Cassiopeia",@"Cho'Gath",@"Corki",@"Darius",@"Diana",@"Dr.Mundo",@"Draven",@"Elise",
 @"Evelynn",@"Ezreal",@"Fiddlesticks",@"Fiora",@"Fizz",@"Galio",@"Gangplank",@"Garen",@"Gnar",@"Gragas",@"Graves",@"Hecarim",@"Heimerdinger",
@@ -35,17 +40,10 @@ NSMutableArray *champions;
 @"Sion",@"Sivir",@"Skarner",@"Sona",@"Soraka",@"Swain",@"Syndra",@"Talon",@"Taric",@"Teemo",@"Thresh",@"Tristana",@"Trundle",@"Tryndamere",@"Twisted Fate",
 @"Twitch",@"Udyr",@"Urgot",@"Varus",@"Vayne",@"Veigar",@"Vel'Koz",@"Vi",@"Viktor",@"Vladimir",@"Volibear",@"Warwick",@"Wukong",@"Xerath",@"Xin Zhao",
 @"Yasuo",@"Yorick",@"Zac",@"Zed",@"Ziggs",@"Zilean",@"Zyra",nil];
-//    [champions addObject:@"Annie"];
-//    [champions addObject:@"Braum"];
-//    [champions addObject:@"Fiddlesticks"];
-//    [champions addObject:@"Gangplank"];
-//    [champions addObject:@"Gargas"];
-//    [champions addObject:@"Heimerdinger"];
-//    [champions addObject:@"Nasus"];
-//    [champions addObject:@"Nidalee"];
-//    [champions addObject:@"Udyr"];
-//    [champions addObject:@"Xin Zhao"];
+    */
     
+    [self retriveData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +56,7 @@ NSMutableArray *champions;
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return [champions count];
+    return [championsArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -69,7 +67,7 @@ NSMutableArray *champions;
     
     // make the cell's title the actual NSIndexPath value
     //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
-    cell.label.text = [champions objectAtIndex:indexPath.row];
+    cell.label.text = [[championsArray objectAtIndex:indexPath.row] championName];
     
     // load the image for this cell
     //NSString *imageToLoad = [NSString stringWithFormat:@"%d.JPG", indexPath.row];
@@ -88,16 +86,40 @@ NSMutableArray *champions;
         NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
         
         // load the image, to prevent it from being cached we use 'initWithContentsOfFile'
-        NSString *imageNameToLoad = [NSString stringWithFormat:@"%@", [champions objectAtIndex:selectedIndexPath.row]];
+        NSString *imageNameToLoad = [NSString stringWithFormat:@"%@", [[championsArray objectAtIndex:selectedIndexPath.row] championName]];
         NSString *pathToImage = [[NSBundle mainBundle] pathForResource:imageNameToLoad ofType:@"jpg"];
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:pathToImage];
         
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.image = image;
-        detailViewController.name=[champions objectAtIndex:selectedIndexPath.row];
+        detailViewController.name.text=(NSString *)[[championsArray objectAtIndex:selectedIndexPath.row] championName];
     }
 }
 
+
+#pragma mark -Methods
+-(void) retriveData
+{
+    NSURL *url = [NSURL URLWithString:getDataURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    //Set up our champions array
+    championsArray = [[NSMutableArray alloc]init];
+    
+    for (int i=0; i < json.count; i++ )
+    {
+        //Create champion objec
+        NSString *cID = [[json objectAtIndex:i]objectForKey:@"id"];
+        NSString *cName = [[json objectAtIndex:i]objectForKey:@"championName"];
+        //NSString *cWinRate = [[json objectAtIndex:i]objectForKey:@"winRates"];
+        
+        Champion *tempChampion = [[Champion alloc] initWithChampionId:cID andChampionName:cName andChampionWinRate:@""];
+        [championsArray addObject:tempChampion];
+    }
+    
+    [self.collectionView reloadData];//?!#@!?
+}
 
 
 
