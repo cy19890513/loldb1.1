@@ -217,8 +217,13 @@
                             <constraint firstItem="igp-jd-aLD" firstAttribute="top" secondItem="LP0-D5-HZ9" secondAttribute="bottom" constant="5" id="EKy-bY-Jms"/>
                             <constraint firstItem="igp-jd-aLD" firstAttribute="centerX" secondItem="rA4-lI-RzD" secondAttribute="centerX" id="nod-2z-941"/>
                             <constraint firstItem="bIc-iA-Btz" firstAttribute="top" secondItem="igp-jd-aLD" secondAttribute="bottom" constant="8" id="wJr-lc-h3C"/>
-                            <constraint firstAttribute="centerX" secondItem="bIc-iA-Btz" secondAttribute="centerX" constant="-0.5" id="yYW-Md-fd0"/>
+                            <constraint firstAttribute="centerX" secondItem="bIc-iA-Btz" secondAttribute="centerX" id="yYW-Md-fd0"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9WT-FU-nad"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="18f-3a-1sw"/>
                     <connections>
