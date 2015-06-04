@@ -81,7 +81,7 @@
     return [championsArray count];
 }
 
-
+//return that table view cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
     
@@ -108,6 +108,7 @@
     return cell;
 }
 
+//This is the method to load data from mysql
 #pragma mark -Methods
 -(void) retriveData
 {

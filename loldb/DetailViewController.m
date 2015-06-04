@@ -65,6 +65,7 @@ NSMutableArray *goodAgainstChampions;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //load label text string to self property string
     self.imageView.image = self.image;
     self.label.text = (NSString *)self.name;
     
@@ -74,6 +75,8 @@ NSMutableArray *goodAgainstChampions;
 
 
 -(void)viewDidLoad{
+    
+    //initialize two array
     badAgainstChampions = [[NSMutableArray alloc] init];
     [badAgainstChampions addObject:@"Annie"];
     [badAgainstChampions addObject:@"Braum"];
@@ -96,6 +99,7 @@ NSMutableArray *goodAgainstChampions;
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
+    //check which collection view it is
     if(view==self.badAgainstCV)
 		return [badAgainstChampions count];
     else
@@ -157,7 +161,7 @@ NSMutableArray *goodAgainstChampions;
 {
     //UICollectionView *myCollectionView = (UICollectionView *)[segue viewWithTag:102];
     
-    
+    //load different detailviewcontroller based on different segue 
     
     if ([[segue identifier] isEqualToString:@"showDetail2"])
     {

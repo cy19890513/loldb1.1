@@ -10,6 +10,8 @@
 #import "CustomCellBackground.h"
 @implementation Cell3
 
+
+//This is best with collection view cell
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

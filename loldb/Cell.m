@@ -52,7 +52,7 @@
 @implementation Cell
 
 - (id)initWithCoder:(NSCoder *)aDecoder
-{
+{	//add a background to the cell
     self = [super initWithCoder:aDecoder];
     if (self)
     {

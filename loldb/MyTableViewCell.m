@@ -20,6 +20,8 @@
 
     // Configure the view for the selected state
 }
+
+//This is The cell for table View
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

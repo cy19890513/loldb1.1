@@ -29,6 +29,8 @@ NSMutableArray *champions;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //initialize the champions array
     /*
     champions = [[NSMutableArray alloc] initWithObjects:@"Aatrox",@"Ahri",@"Akali",@"Amumu",@"Anivia",@"Annie",@"Ashe",@"Azir",@"Bard",
 @"Blitzcrank",@"Brand",@"Braum",@"Caitlyn",@"Cassiopeia",@"Cho'Gath",@"Corki",@"Darius",@"Diana",@"Dr.Mundo",@"Draven",@"Elise",
@@ -98,6 +100,7 @@ NSMutableArray *champions;
 
 
 #pragma mark -Methods
+//This method is design to get data from database
 -(void) retriveData
 {
     NSURL *url = [NSURL URLWithString:getDataURL];

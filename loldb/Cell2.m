@@ -12,7 +12,7 @@
 @implementation Cell2
 
 
-
+// This is best against collection view cell
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

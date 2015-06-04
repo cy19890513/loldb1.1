@@ -14,7 +14,7 @@
 @synthesize championID, championName, championWinRate;
 
 
-//Methods
+//Design for champion object
 -(id) initWithChampionId: (NSString *) cID andChampionName:(NSString *) cName andChampionWinRate:(NSString *) cWinRate
 {
     self=[super init];
