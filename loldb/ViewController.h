@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UICollectionViewController
+@interface ViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource, UISearchBarDelegate,UISearchDisplayDelegate>
 
 
 @property(nonatomic, strong) NSMutableArray * json;
 @property(nonatomic, strong) NSMutableArray * championsArray;
-
+@property(nonatomic, strong) NSMutableArray *searchResults;
+@property IBOutlet UISearchBar *searchBar;
 #pragma mark -Methods
 -(void) retriveData;
 

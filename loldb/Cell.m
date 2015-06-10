@@ -50,6 +50,7 @@
 #import "CustomCellBackground.h"
 
 @implementation Cell
+@synthesize image,label;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {	//add a background to the cell

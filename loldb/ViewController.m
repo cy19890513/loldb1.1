@@ -24,10 +24,12 @@ NSMutableArray *champions;
 #define getDataURL @"http://www.boostshore.com/loldb/champions.php"
 
 @implementation ViewController
-@synthesize json, championsArray;
+@synthesize json, championsArray,searchResults,searchBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"COUNTER PICKS";
     // Do any additional setup after loading the view, typically from a nib.
     
     //initialize the champions array
@@ -45,7 +47,16 @@ NSMutableArray *champions;
     */
     
     [self retriveData];
-
+    // Initialize the filteredCandyArray with a capacity equal to the candyArray's capacity
+    self.searchResults = [NSMutableArray arrayWithArray:championsArray];
+    
+	//add a dismissKeyboard function
+    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+    //                               initWithTarget:self
+    //                               action:@selector(dismissKeyboard)];
+    
+    //[self.view addGestureRecognizer:tap];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,8 +68,16 @@ NSMutableArray *champions;
 
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
-{
-    return [championsArray count];
+{	/*
+    if ( view == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+    }
+    else{
+        return [championsArray count];
+    }
+    */
+    return [searchResults count];
+    //return [championsArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -69,7 +88,7 @@ NSMutableArray *champions;
     
     // make the cell's title the actual NSIndexPath value
     //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
-    cell.label.text = [[championsArray objectAtIndex:indexPath.row] championName];
+    cell.label.text = [[searchResults objectAtIndex:indexPath.row] championName];
     
     // load the image for this cell
     //NSString *imageToLoad = [NSString stringWithFormat:@"%d.JPG", indexPath.row];
@@ -79,16 +98,25 @@ NSMutableArray *champions;
     return cell;
 }
 
+//DeSelect Cell
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
 // the user tapped a collection item, load and set the image on the detail view controller
 //
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self dismissKeyboard];
+    [self.searchBar resignFirstResponder];
     if ([[segue identifier] isEqualToString:@"showDetail"])
     {
-        NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        UICollectionView *collectionView = (UICollectionView *)[self.view viewWithTag:301];
+        NSIndexPath *selectedIndexPath = [[collectionView indexPathsForSelectedItems] objectAtIndex:0];
         
         // load the image, to prevent it from being cached we use 'initWithContentsOfFile'
-        NSString *imageNameToLoad = [NSString stringWithFormat:@"%@", [[championsArray objectAtIndex:selectedIndexPath.row] championName]];
+        NSString *imageNameToLoad = [NSString stringWithFormat:@"%@", [[searchResults objectAtIndex:selectedIndexPath.row] championName]];
         NSString *pathToImage = [[NSBundle mainBundle] pathForResource:imageNameToLoad ofType:@"jpg"];
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:pathToImage];
         
@@ -121,13 +149,102 @@ NSMutableArray *champions;
         [championsArray addObject:tempChampion];
     }
     
-    [self.collectionView reloadData];//?!#@!?
+    //[self.view viewDidLoad];//?!#@!?
+    UICollectionView *collectionView = (UICollectionView *)[self.view viewWithTag:301];
+    [collectionView reloadData];
+    //[[self.view viewWithTag:103] reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [super viewWillAppear:animated];
+}
 
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.searchResults removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.championName contains[c] %@",searchText];
+    searchResults = [NSMutableArray arrayWithArray:[championsArray filteredArrayUsingPredicate:predicate]];
+    
+    UICollectionView *collectionView = (UICollectionView *)[self.view viewWithTag:301];
+    [collectionView reloadData];
+}
 
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    NSLog(@"searchDisplayController shouldReloadTableForSearchString");
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    NSLog(@"searchDisplayController shouldReloadTableForSearchScope");
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
+- (void)searchBar:(UISearchBar *) searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"TextDidChange %@",searchBar.text);
+    if (searchBar.text && [searchBar.text length]) {
+        NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"SELF.championName CONTAINS[cd] %@", searchBar.text];
+        self.searchResults= [championsArray filteredArrayUsingPredicate:filterPredicate];
+        
+    } else {
+        self.searchResults = championsArray;
+    }
+    
+    UICollectionView *collectionView = (UICollectionView *)[self.view viewWithTag:301];
+    [collectionView reloadData];
+}
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self cancelSearching];
+    
+    searchResults = championsArray;
+    UICollectionView *collectionView = (UICollectionView *)[self.view viewWithTag:301];
+    [collectionView reloadData];
+    NSLog(@"searchBarCancelButtonClicked");
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    //self.searchBarActive = YES;
+    [self.view endEditing:YES]; //***** YANG
+    NSLog(@"searchBarSearchButtonClicked");
+}
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    // we used here to set self.searchBarActive = YES
+    // but we'll not do that any more... it made problems
+    // it's better to set self.searchBarActive = YES when user typed something
+    [self.searchBar setShowsCancelButton:YES animated:YES];
+    NSLog(@"searchBarTextDidBeginEditing");
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    // this method is being called when search btn in the keyboard tapped
+    // we set searchBarActive = NO
+    // but no need to reloadCollectionView
+    //self.searchBarActive = NO;
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    NSLog(@"searchBarTextDidEndEditing");
+}
+-(void)cancelSearching{
+    //self.searchBarActive = NO;
+    [self.searchBar resignFirstResponder];
+    self.searchBar.text  = @"";
+    NSLog(@"CancelSearching");
+}
+
+//dismiss keyboad
+-(void)dismissKeyboard {
+    [self.searchBar resignFirstResponder];
+}
 
 @end
