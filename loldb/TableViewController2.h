@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TableViewController2 : UITableViewController
+@interface TableViewController2 : UIViewController
 <UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, strong) NSMutableArray * json;

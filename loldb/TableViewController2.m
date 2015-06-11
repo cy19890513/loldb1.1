@@ -27,7 +27,7 @@
     
     //set the title
     self.title =@"WIN RATES";
-    
+    self.view.backgroundColor = [UIColor blackColor];
     [self retriveData];
     /*
     champions = [[NSMutableArray alloc] init];
@@ -86,8 +86,8 @@
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
     
     UIImageView *imageView = (UIImageView *)[self.view viewWithTag:201];
-    UILabel *nameLabel = (UILabel *)[self.tableView viewWithTag:202];
-    UILabel *rateLabel = (UILabel *)[self.tableView viewWithTag:203];
+    UILabel *nameLabel = (UILabel *)[self.view viewWithTag:202];
+    UILabel *rateLabel = (UILabel *)[self.view viewWithTag:203];
     
     //nameLabel.text = [champions objectAtIndex:indexPath.row];
     //rateLabel.text = [championsWinRate objectAtIndex:indexPath.row];
@@ -130,7 +130,7 @@
         [championsArray addObject:tempChampion];
     }
     
-    [self.tableView reloadData];//?!#@!?
+    [(UITableView *)[self.view viewWithTag:204] reloadData];//?!#@!?
 }
 
 

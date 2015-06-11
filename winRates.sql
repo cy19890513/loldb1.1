@@ -39,15 +39,16 @@ CREATE TABLE IF NOT EXISTS `winRates` (
 --
 
 INSERT INTO `winRates` (`id`, `championName`, `winRates`) VALUES
-(1, 'Annie', '67%'),
-(2, 'Bard', '67%'),
-(3, 'Nasus', '65%'),
-(4, 'Xin Zhao', '64%'),
-(5, 'Heimerdinger', '55%'),
-(6, 'Nasus', '52%'),
-(7, 'Nidalee', '51%'),
-(8, 'Udyr', '51%'),
-(9, 'Fiddlesticks', '51%');
+(1, 'Janna', '53.9%'),
+(2, 'Sejuani', '53.8%'),
+(3, 'Amumu', '53.7%'),
+(4, 'Malzahar', '53.6%'),
+(5, 'Heimerdinger', '53.4%'),
+(6, 'Ahri', '53.2%'),
+(7, 'Ashe', '52.8%'),
+(8, 'Wukong', '52.8%'),
+(9, 'Katarina', '52.7%'),
+(10, 'Swain', '52.6%');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
