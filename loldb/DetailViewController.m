@@ -49,6 +49,7 @@
 #import "DetailViewController.h"
 #import "Cell2.h"
 #import "Cell3.h"
+#import "Champion.h"
 @interface DetailViewController ()
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -59,8 +60,10 @@
 @end
 NSMutableArray *badAgainstChampions;
 NSMutableArray *goodAgainstChampions;
-
+NSMutableArray *tempArray;
 @implementation DetailViewController
+@synthesize championsArray,image,name,goodAgainstCV,badAgainstCV;
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -68,6 +71,11 @@ NSMutableArray *goodAgainstChampions;
     //load label text string to self property string
     self.imageView.image = self.image;
     self.label.text = (NSString *)self.name;
+    self.title = self.name;
+    [self setNeedsStatusBarAppearanceUpdate];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    
     
     [self viewDidLoad ];
     
@@ -76,23 +84,39 @@ NSMutableArray *goodAgainstChampions;
 
 -(void)viewDidLoad{
     
-    //initialize two array
+    [tempArray removeAllObjects];
+    tempArray = [NSMutableArray arrayWithArray:[championsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.championName == %@",name]]];
+    Champion *temp = tempArray[0];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.championName contains[c] %@",searchText];
     badAgainstChampions = [[NSMutableArray alloc] init];
-    [badAgainstChampions addObject:@"Annie"];
-    [badAgainstChampions addObject:@"Braum"];
-    [badAgainstChampions addObject:@"Fiddlesticks"];
-    [badAgainstChampions addObject:@"Gangplank"];
-    [badAgainstChampions addObject:@"Gargas"];
-    [badAgainstChampions addObject:@"Heimerdinger"];
-    
-    
-    goodAgainstChampions = [[NSMutableArray alloc] init];
-    [goodAgainstChampions addObject:@"Nidalee"];
-    [goodAgainstChampions addObject:@"Xin Zhao"];
-    [goodAgainstChampions addObject:@"Heimerdinger"];
-    [goodAgainstChampions addObject:@"Nasus"];
-    [goodAgainstChampions addObject:@"Udyr"];
-    
+	goodAgainstChampions = [[NSMutableArray alloc] init];
+    //initialize two array
+    if(temp != nil)
+    {
+        [badAgainstChampions addObject:temp.badAgainstChampion1];[badAgainstChampions addObject:temp.badAgainstChampion2];
+        [badAgainstChampions addObject:temp.badAgainstChampion3];[badAgainstChampions addObject:temp.badAgainstChampion4];
+        [badAgainstChampions addObject:temp.badAgainstChampion5];[badAgainstChampions addObject:temp.badAgainstChampion6];
+        [goodAgainstChampions addObject:temp.goodAgainstChampion1];[goodAgainstChampions addObject:temp.goodAgainstChampion2];
+        [goodAgainstChampions addObject:temp.goodAgainstChampion3];[goodAgainstChampions addObject:temp.goodAgainstChampion4];
+        [goodAgainstChampions addObject:temp.goodAgainstChampion5];[goodAgainstChampions addObject:temp.goodAgainstChampion6];
+    }
+    else
+    {
+        [badAgainstChampions addObject:@"Annie"];
+        [badAgainstChampions addObject:@"Braum"];
+        [badAgainstChampions addObject:@"Fiddlesticks"];
+        [badAgainstChampions addObject:@"Gangplank"];
+        [badAgainstChampions addObject:@"Gargas"];
+        [badAgainstChampions addObject:@"Heimerdinger"];
+        
+        
+        
+        [goodAgainstChampions addObject:@"Nidalee"];
+        [goodAgainstChampions addObject:@"Xin Zhao"];
+        [goodAgainstChampions addObject:@"Heimerdinger"];
+        [goodAgainstChampions addObject:@"Nasus"];
+        [goodAgainstChampions addObject:@"Udyr"];
+    }
     
     
 }
@@ -176,6 +200,7 @@ NSMutableArray *goodAgainstChampions;
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.image = image;
         detailViewController.name=[badAgainstChampions objectAtIndex:selectedIndexPath.row];
+        detailViewController.championsArray = championsArray;
     }
     
     
@@ -192,10 +217,19 @@ NSMutableArray *goodAgainstChampions;
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.image = image;
         detailViewController.name=[goodAgainstChampions objectAtIndex:selectedIndexPath.row];
+        detailViewController.championsArray = championsArray;
+
     }
 
     
 }
+
+//DeSelect Cell
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
 
 
 @end

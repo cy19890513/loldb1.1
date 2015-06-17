@@ -21,6 +21,8 @@
     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     return YES;
 }

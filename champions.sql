@@ -8,16 +8,16 @@ CREATE TABLE IF NOT EXISTS `champions` (
   `badAgainst4` varchar(255) DEFAULT NULL,
   `badAgainst5` varchar(255) DEFAULT NULL,
   `badAgainst6` varchar(255) DEFAULT NULL,
-  `goodWith1` varchar(255) DEFAULT NULL,
-  `goodWith2` varchar(255) DEFAULT NULL,
-  `goodWith3` varchar(255) DEFAULT NULL,
-  `goodWith4` varchar(255) DEFAULT NULL,
-  `goodWith5` varchar(255) DEFAULT NULL,
-  `goodWith6` varchar(255) DEFAULT NULL,
+  `goodAgainst1` varchar(255) DEFAULT NULL,
+  `goodAgainst2` varchar(255) DEFAULT NULL,
+  `goodAgainst3` varchar(255) DEFAULT NULL,
+  `goodAgainst4` varchar(255) DEFAULT NULL,
+  `goodAgainst5` varchar(255) DEFAULT NULL,
+  `goodAgainst6` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `champions` (`id`, `championName`, `badAgainst1`,`badAgainst2`,`badAgainst3`,`badAgainst4`,`badAgainst5`,`badAgainst6`,`goodWith1`,`goodWith2`,`goodWith3`,`goodWith4`,`goodWith5`,`goodWith6`) VALUES
+INSERT INTO `champions` (`id`, `championName`, `badAgainst1`,`badAgainst2`,`badAgainst3`,`badAgainst4`,`badAgainst5`,`badAgainst6`,`goodAgainst1`,`goodAgainst2`,`goodAgainst3`,`goodAgainst4`,`goodAgainst5`,`goodAgainst6`) VALUES
 (NULL, 'Aatrox', 'Jax','Fiora','Pantheon','Teemo','Renekton','Riven','Yasuo','Darius','Akali','Katarina','Zed','Ryze'),
 (NULL, 'Ahri', 'LeBlanc','Swain','Yasuo','Diana','Talon','Syndra','Karthus','Azir','Katarina','Gragas',"Vel'Koz",'Xerath'),
 (NULL, 'Akali', 'Lee Sin','Rumble','Mordekaiser','Annie','Syndra','Malzahar','Karthus','Yasuo','Teemo',"Vel'Koz",'Nidalee','Yasuo'),

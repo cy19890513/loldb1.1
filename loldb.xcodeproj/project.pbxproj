@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682166DD1B2F5E87009A2614 /* ekko.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 682166DC1B2F5E87009A2614 /* ekko.jpg */; };
 		68B4571C1B1001D2007A826C /* Aatrox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B456FE1B1001D2007A826C /* Aatrox.jpg */; };
 		68B4571D1B1001D2007A826C /* Ahri.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B456FF1B1001D2007A826C /* Ahri.jpg */; };
 		68B4571E1B1001D2007A826C /* Akali.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457001B1001D2007A826C /* Akali.jpg */; };
@@ -131,6 +132,7 @@
 		68B457F31B100287007A826C /* Ziggs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457CF1B100287007A826C /* Ziggs.jpg */; };
 		68B457F41B100287007A826C /* Zilean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457D01B100287007A826C /* Zilean.jpg */; };
 		68B457F51B100287007A826C /* Zyra.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457D11B100287007A826C /* Zyra.jpg */; };
+		68D41FE41B2DF7FF00A2EE5D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D41FE31B2DF7FF00A2EE5D /* iAd.framework */; };
 		68E616B51B1E57AF00DBE6AF /* Champion.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E616B41B1E57AF00DBE6AF /* Champion.m */; };
 		68F02B771B0FB7F400A24651 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02B761B0FB7F400A24651 /* main.m */; };
 		68F02B7A1B0FB7F400A24651 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02B791B0FB7F400A24651 /* AppDelegate.m */; };
@@ -169,6 +171,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682166DC1B2F5E87009A2614 /* ekko.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ekko.jpg; sourceTree = "<group>"; };
 		68B456FE1B1001D2007A826C /* Aatrox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aatrox.jpg; sourceTree = "<group>"; };
 		68B456FF1B1001D2007A826C /* Ahri.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ahri.jpg; sourceTree = "<group>"; };
 		68B457001B1001D2007A826C /* Akali.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Akali.jpg; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 		68B457CF1B100287007A826C /* Ziggs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ziggs.jpg; sourceTree = "<group>"; };
 		68B457D01B100287007A826C /* Zilean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zilean.jpg; sourceTree = "<group>"; };
 		68B457D11B100287007A826C /* Zyra.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zyra.jpg; sourceTree = "<group>"; };
+		68D41FE31B2DF7FF00A2EE5D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		68E616B31B1E57AF00DBE6AF /* Champion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Champion.h; sourceTree = "<group>"; };
 		68E616B41B1E57AF00DBE6AF /* Champion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Champion.m; sourceTree = "<group>"; };
 		68F02B711B0FB7F400A24651 /* loldb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loldb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D41FE41B2DF7FF00A2EE5D /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +370,7 @@
 		68F02B681B0FB7F400A24651 = {
 			isa = PBXGroup;
 			children = (
+				68D41FE31B2DF7FF00A2EE5D /* iAd.framework */,
 				68F02B731B0FB7F400A24651 /* loldb */,
 				68F02B901B0FB7F500A24651 /* loldbTests */,
 				68F02B721B0FB7F400A24651 /* Products */,
@@ -507,6 +513,7 @@
 				68B4571B1B1001D2007A826C /* Garen.jpg */,
 				68B4573A1B10025C007A826C /* Gragas.jpg */,
 				68B4573B1B10025C007A826C /* Gnar.jpg */,
+				682166DC1B2F5E87009A2614 /* ekko.jpg */,
 				68B4573C1B10025C007A826C /* Graves.jpg */,
 				68B4573D1B10025C007A826C /* Hecarim.jpg */,
 				68B4573E1B10025C007A826C /* Heimerdinger.jpg */,
@@ -767,6 +774,7 @@
 				68B457931B100271007A826C /* Miss Fortune.jpg in Resources */,
 				68B457AC1B100271007A826C /* Singed.jpg in Resources */,
 				68B457EA1B100287007A826C /* Volibear.jpg in Resources */,
+				682166DD1B2F5E87009A2614 /* ekko.jpg in Resources */,
 				68B4576D1B10025C007A826C /* Leona.jpg in Resources */,
 				68B457A31B100271007A826C /* Renekton.jpg in Resources */,
 				68B4571E1B1001D2007A826C /* Akali.jpg in Resources */,
@@ -931,6 +939,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1039,6 +1048,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1050,6 +1060,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

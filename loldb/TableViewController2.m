@@ -20,7 +20,7 @@
 #define getDataURL @"http://www.boostshore.com/loldb/winRate.php"
 
 @implementation TableViewController2
-@synthesize json, championsArray;
+@synthesize json, championsArray,tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +28,19 @@
     //set the title
     self.title =@"WIN RATES";
     self.view.backgroundColor = [UIColor blackColor];
+    [self setNeedsStatusBarAppearanceUpdate];
     [self retriveData];
+    
+    
+    /*// Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self.tableView
+                            action:@selector(reloadData)
+                  forControlEvents:UIControlEventValueChanged];
+    */
+    
     /*
     champions = [[NSMutableArray alloc] init];
     [champions addObject:@"Annie"];
@@ -131,7 +143,30 @@
     }
     
     [(UITableView *)[self.view viewWithTag:204] reloadData];//?!#@!?
+    
 }
+/*
+#pragma mark - refresh control
+- (void)reloadData
+{
+    // Reload table data
+    [self.tableView reloadData];
+    
+    // End the refreshing
+    if (self.refreshControl) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                    forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+        
+        [self.refreshControl endRefreshing];
+    }
+}
+*/
 
 
 /*
@@ -177,5 +212,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
+
 
 @end

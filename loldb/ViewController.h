@@ -15,6 +15,9 @@
 @property(nonatomic, strong) NSMutableArray * championsArray;
 @property(nonatomic, strong) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+
 #pragma mark -Methods
 -(void) retriveData;
 

@@ -51,7 +51,8 @@
 @interface DetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic,strong) UILabel *name;
+@property (nonatomic,strong) NSString *name;
+@property(nonatomic, strong) NSMutableArray * championsArray;
 //@property (nonatomic,strong) NSMutableArray *badAgainstChampions;
 //@property (nonatomic,strong) NSMutableArray *goodAgainstChampions;
 @property (weak, nonatomic) IBOutlet UICollectionView *badAgainstCV;

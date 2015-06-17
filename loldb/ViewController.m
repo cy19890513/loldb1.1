@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "Cell.h"
 #import "Champion.h"
+#import <iad/iAd.h>
 
 
 @interface ViewController (){
@@ -24,39 +25,33 @@ NSMutableArray *champions;
 #define getDataURL @"http://www.boostshore.com/loldb/champions.php"
 
 @implementation ViewController
-@synthesize json, championsArray,searchResults,searchBar;
+@synthesize json, championsArray,searchResults,searchBar,collectionView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"COUNTER PICKS";
+    [self setNeedsStatusBarAppearanceUpdate];
+    collectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    
     // Do any additional setup after loading the view, typically from a nib.
     
-    //initialize the champions array
-    /*
-    champions = [[NSMutableArray alloc] initWithObjects:@"Aatrox",@"Ahri",@"Akali",@"Amumu",@"Anivia",@"Annie",@"Ashe",@"Azir",@"Bard",
-@"Blitzcrank",@"Brand",@"Braum",@"Caitlyn",@"Cassiopeia",@"Cho'Gath",@"Corki",@"Darius",@"Diana",@"Dr.Mundo",@"Draven",@"Elise",
-@"Evelynn",@"Ezreal",@"Fiddlesticks",@"Fiora",@"Fizz",@"Galio",@"Gangplank",@"Garen",@"Gnar",@"Gragas",@"Graves",@"Hecarim",@"Heimerdinger",
-@"Irelia",@"Janna",@"Jarven IV",@"Jax",@"Jayce",@"Jinx",@"Kalista",@"Karma",@"Karthus",@"Kassadin",@"Katarina",@"Kayle",@"Kennen",
-@"Kha'Zix",@"Kog'Maw",@"LeBlanc",@"Lee Sin",@"Leona",@"Lissandra",@"Lucian",@"Lulu",@"Lux",@"Malphite",@"Malzahar",@"Maokai",@"Master Yi",
-@"Miss Fortune",@"Mordekaiser",@"Morgana",@"Nami",@"Nasus",@"Nautilus",@"Nidalee",@"Nocturne",@"Nunu",@"Olaf",@"Orianna",@"Pantheon",
-@"Poppy",@"Quinn",@"Rammus",@"Rek'Sai",@"Renekton",@"Rengar",@"Riven",@"Rumble",@"Ryze",@"Sejuani",@"Shaco",@"Shen",@"Shyvana",@"Singed",
-@"Sion",@"Sivir",@"Skarner",@"Sona",@"Soraka",@"Swain",@"Syndra",@"Talon",@"Taric",@"Teemo",@"Thresh",@"Tristana",@"Trundle",@"Tryndamere",@"Twisted Fate",
-@"Twitch",@"Udyr",@"Urgot",@"Varus",@"Vayne",@"Veigar",@"Vel'Koz",@"Vi",@"Viktor",@"Vladimir",@"Volibear",@"Warwick",@"Wukong",@"Xerath",@"Xin Zhao",
-@"Yasuo",@"Yorick",@"Zac",@"Zed",@"Ziggs",@"Zilean",@"Zyra",nil];
-    */
     
     [self retriveData];
     // Initialize the filteredCandyArray with a capacity equal to the candyArray's capacity
     self.searchResults = [NSMutableArray arrayWithArray:championsArray];
     
-	//add a dismissKeyboard function
-    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-    //                               initWithTarget:self
-    //                               action:@selector(dismissKeyboard)];
     
-    //[self.view addGestureRecognizer:tap];
+       
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,7 +117,8 @@ NSMutableArray *champions;
         
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.image = image;
-        detailViewController.name.text=(NSString *)[[championsArray objectAtIndex:selectedIndexPath.row] championName];
+        detailViewController.name=imageNameToLoad;
+        detailViewController.championsArray= championsArray;
     }
 }
 
@@ -143,9 +139,22 @@ NSMutableArray *champions;
         //Create champion objec
         NSString *cID = [[json objectAtIndex:i]objectForKey:@"id"];
         NSString *cName = [[json objectAtIndex:i]objectForKey:@"championName"];
+        NSString *cBA1 = [[json objectAtIndex:i]objectForKey:@"badAgainst1"];
+        NSString *cBA2 = [[json objectAtIndex:i]objectForKey:@"badAgainst2"];
+        NSString *cBA3 = [[json objectAtIndex:i]objectForKey:@"badAgainst3"];
+        NSString *cBA4 = [[json objectAtIndex:i]objectForKey:@"badAgainst4"];
+        NSString *cBA5 = [[json objectAtIndex:i]objectForKey:@"badAgainst5"];
+        NSString *cBA6 = [[json objectAtIndex:i]objectForKey:@"badAgainst6"];
+        NSString *cGA1 = [[json objectAtIndex:i]objectForKey:@"goodAgainst1"];
+        NSString *cGA2 = [[json objectAtIndex:i]objectForKey:@"goodAgainst2"];
+        NSString *cGA3 = [[json objectAtIndex:i]objectForKey:@"goodAgainst3"];
+        NSString *cGA4 = [[json objectAtIndex:i]objectForKey:@"goodAgainst4"];
+        NSString *cGA5 = [[json objectAtIndex:i]objectForKey:@"goodAgainst5"];
+        NSString *cGA6 = [[json objectAtIndex:i]objectForKey:@"goodAgainst6"];
         //NSString *cWinRate = [[json objectAtIndex:i]objectForKey:@"winRates"];
         
-        Champion *tempChampion = [[Champion alloc] initWithChampionId:cID andChampionName:cName andChampionWinRate:@""];
+        //Champion *tempChampion = [[Champion alloc] initWithChampionId:cID andChampionName:cName andChampionWinRate:@"" ];
+        Champion *tempChampion = [[Champion alloc] initWithChampionId:cID andChampionName:cName andBAC1:cBA1 andBAC2:cBA2 andBAC3:cBA3 andBAC4:cBA4 andBAC5:cBA5 andBAC6:cBA6 andGAC1:cGA1 andGAC2:cGA2 andGAC3:cGA3 andGAC4:cGA4 andGAC5:cGA5 andGAC6:cGA6];
         [championsArray addObject:tempChampion];
     }
     
@@ -155,11 +164,7 @@ NSMutableArray *champions;
     //[[self.view viewWithTag:103] reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [super viewWillAppear:animated];
-}
+
 
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
@@ -174,7 +179,7 @@ NSMutableArray *champions;
     [collectionView reloadData];
 }
 
-#pragma mark - UISearchDisplayController Delegate Methods
+#pragma mark - Search
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:
@@ -247,4 +252,30 @@ NSMutableArray *champions;
     [self.searchBar resignFirstResponder];
 }
 
+#pragma mark -statusBar
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
+
+
 @end
+
+
+
+//initialize the champions array
+/*
+ champions = [[NSMutableArray alloc] initWithObjects:@"Aatrox",@"Ahri",@"Akali",@"Amumu",@"Anivia",@"Annie",@"Ashe",@"Azir",@"Bard",
+ @"Blitzcrank",@"Brand",@"Braum",@"Caitlyn",@"Cassiopeia",@"Cho'Gath",@"Corki",@"Darius",@"Diana",@"Dr.Mundo",@"Draven",@"Elise",
+ @"Evelynn",@"Ezreal",@"Fiddlesticks",@"Fiora",@"Fizz",@"Galio",@"Gangplank",@"Garen",@"Gnar",@"Gragas",@"Graves",@"Hecarim",@"Heimerdinger",
+ @"Irelia",@"Janna",@"Jarven IV",@"Jax",@"Jayce",@"Jinx",@"Kalista",@"Karma",@"Karthus",@"Kassadin",@"Katarina",@"Kayle",@"Kennen",
+ @"Kha'Zix",@"Kog'Maw",@"LeBlanc",@"Lee Sin",@"Leona",@"Lissandra",@"Lucian",@"Lulu",@"Lux",@"Malphite",@"Malzahar",@"Maokai",@"Master Yi",
+ @"Miss Fortune",@"Mordekaiser",@"Morgana",@"Nami",@"Nasus",@"Nautilus",@"Nidalee",@"Nocturne",@"Nunu",@"Olaf",@"Orianna",@"Pantheon",
+ @"Poppy",@"Quinn",@"Rammus",@"Rek'Sai",@"Renekton",@"Rengar",@"Riven",@"Rumble",@"Ryze",@"Sejuani",@"Shaco",@"Shen",@"Shyvana",@"Singed",
+ @"Sion",@"Sivir",@"Skarner",@"Sona",@"Soraka",@"Swain",@"Syndra",@"Talon",@"Taric",@"Teemo",@"Thresh",@"Tristana",@"Trundle",@"Tryndamere",@"Twisted Fate",
+ @"Twitch",@"Udyr",@"Urgot",@"Varus",@"Vayne",@"Veigar",@"Vel'Koz",@"Vi",@"Viktor",@"Vladimir",@"Volibear",@"Warwick",@"Wukong",@"Xerath",@"Xin Zhao",
+ @"Yasuo",@"Yorick",@"Zac",@"Zed",@"Ziggs",@"Zilean",@"Zyra",nil];
+ */
+
