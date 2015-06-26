@@ -75,7 +75,11 @@ NSMutableArray *tempArray;
     [self setNeedsStatusBarAppearanceUpdate];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    
+   	//YANG 26June2015 add a home button
+    UIButton* homeButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [homeButton addTarget:self action:@selector(showHomeView:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+    //[[self navigationItem] setTitle:@"Champions"];
     
     [self viewDidLoad ];
     
@@ -201,6 +205,22 @@ NSMutableArray *tempArray;
         detailViewController.image = image;
         detailViewController.name=[badAgainstChampions objectAtIndex:selectedIndexPath.row];
         detailViewController.championsArray = championsArray;
+        
+        /* 25Jun2015
+        self.image = image;
+        self.name = [badAgainstChampions objectAtIndex:selectedIndexPath.row];
+        self.championsArray = championsArray;
+        
+        
+        self.imageView.image = image;
+        self.label.text = [badAgainstChampions objectAtIndex:selectedIndexPath.row];
+        self.title = self.name;
+        [self.view reloadInputViews];
+         */
+        
+        //[self dismissModalViewControllerAnimated:YES];
+        //[self.navigationController popToRootViewControllerAnimated:YES];
+
     }
     
     
@@ -230,6 +250,12 @@ NSMutableArray *tempArray;
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
-
+//YANG 26June2015 add a home button
+- (void) showHomeView:(id)sender
+{
+    //TODO: poptorootviewcontroller sucks. memory issue.
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 @end

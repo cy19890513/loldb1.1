@@ -21,6 +21,7 @@ INSERT INTO `champions` (`id`, `championName`, `badAgainst1`,`badAgainst2`,`badA
 (NULL, 'Aatrox', 'Jax','Fiora','Pantheon','Teemo','Renekton','Riven','Yasuo','Darius','Akali','Katarina','Zed','Ryze'),
 (NULL, 'Ahri', 'LeBlanc','Swain','Yasuo','Diana','Talon','Syndra','Karthus','Azir','Katarina','Gragas',"Vel'Koz",'Xerath'),
 (NULL, 'Akali', 'Lee Sin','Rumble','Mordekaiser','Annie','Syndra','Malzahar','Karthus','Yasuo','Teemo',"Vel'Koz",'Nidalee','Yasuo'),
+(NULL, 'Alistar', 'Janna','Vayne','Caitlyn','Tristana','Lulu','Morgana','Blitzcrank','Leona','Thresh','Katarina','Braum','Yasuo'),
 (NULL, 'Amumu', 'Shyvana','Xin Zhao','Lee Sin','Shaco','Dr.Mundo','Olaf','Blitzcrank','Graves','Jax','Yasuo','Ryze','Renekton'),
 (NULL, 'Anivia', 'Fizz','Kassadin','Diana','LeBlanc','Orianna','Syndra','Ryze','Lissandra','Kayle','Karthus','Heimerdinger','Yasuo'),
 (NULL, 'Annie', 'Brand','Orianna','LeBlanc','Syndra','Morgana','Lux','Yasuo','Akali','Fizz','LeBlanc','Kayle','Katarina'),

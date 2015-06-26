@@ -42,7 +42,9 @@ NSMutableArray *champions;
     self.searchResults = [NSMutableArray arrayWithArray:championsArray];
     
     
-       
+    //YC 19June2015
+    //[self.collectionView setContentOffset:CGPointMake(0,44) animated:YES];
+    //self.view.tableHeaderView = self.searchBar;
     
     
 }
@@ -258,7 +260,17 @@ NSMutableArray *champions;
     return UIStatusBarStyleLightContent;
 }
 
-
+//YC 19June2015
+#pragma mark -searchBar Hide And Show
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    //searchBar.hidden = YES;
+}
+// called when scroll view grinds to a halt
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+}
 
 
 @end

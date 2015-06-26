@@ -9,7 +9,7 @@
         <!--Counter picks-->
         <scene sceneID="fMX-dn-1Ld">
             <objects>
-                <navigationController definesPresentationContext="YES" id="omK-ij-zDu" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" hidesBarsOnSwipe="YES" hidesBarsWhenKeyboardAppears="YES" id="omK-ij-zDu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Counter picks" image="scene1.png" id="vwd-Du-x8I"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="T9k-xE-bXh">
                         <autoresizingMask key="autoresizingMask"/>
@@ -222,12 +222,14 @@
                             <constraint firstItem="igp-jd-aLD" firstAttribute="top" secondItem="LP0-D5-HZ9" secondAttribute="bottom" constant="5" id="EKy-bY-Jms"/>
                             <constraint firstItem="nNh-cr-75i" firstAttribute="top" secondItem="qvt-NM-A6b" secondAttribute="bottom" constant="3" id="J4X-tO-Phk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="f6E-gl-43Y" secondAttribute="trailing" constant="-16" id="KvO-vy-udl"/>
+                            <constraint firstAttribute="centerX" secondItem="f6E-gl-43Y" secondAttribute="centerX" id="SAV-ve-SB7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qvt-NM-A6b" secondAttribute="trailing" constant="-16" id="d2H-NL-pUO"/>
                             <constraint firstItem="6Rs-Mu-FyN" firstAttribute="top" secondItem="igp-jd-aLD" secondAttribute="bottom" constant="8" id="mJi-mP-rO1"/>
                             <constraint firstItem="igp-jd-aLD" firstAttribute="centerX" secondItem="rA4-lI-RzD" secondAttribute="centerX" id="nod-2z-941"/>
                             <constraint firstAttribute="centerX" secondItem="nNh-cr-75i" secondAttribute="centerX" id="oOz-Jn-Opn"/>
                             <constraint firstItem="qvt-NM-A6b" firstAttribute="leading" secondItem="rA4-lI-RzD" secondAttribute="leadingMargin" constant="-16" id="q2v-Xj-R1Z"/>
                             <constraint firstItem="qvt-NM-A6b" firstAttribute="top" secondItem="6Rs-Mu-FyN" secondAttribute="bottom" constant="8" id="qjO-EW-wom"/>
+                            <constraint firstAttribute="centerX" secondItem="qvt-NM-A6b" secondAttribute="centerX" id="u5p-Oh-hTT"/>
                             <constraint firstItem="igp-jd-aLD" firstAttribute="top" secondItem="LP0-D5-HZ9" secondAttribute="bottom" constant="5" id="uLc-4E-sez"/>
                             <constraint firstItem="f6E-gl-43Y" firstAttribute="top" secondItem="nNh-cr-75i" secondAttribute="bottom" constant="8" id="xye-Dw-cXh"/>
                         </constraints>
@@ -239,6 +241,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="18f-3a-1sw"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="badAgainstCV" destination="qvt-NM-A6b" id="cTA-Lh-ful"/>
                         <outlet property="goodAgainstCV" destination="f6E-gl-43Y" id="Bl1-ax-hXk"/>
@@ -259,6 +262,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <mapView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="uqi-EW-Sog">
+                            <rect key="frame" x="0.0" y="98" width="600" height="247"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </mapView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="76" id="8nd-g0-Ee0">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -313,7 +320,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="76" id="HMu-ht-sWh">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="76" id="HMu-ht-sWh">
                                         <rect key="frame" x="0.0" y="20" width="610" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HMu-ht-sWh" id="iIT-gK-Ngk">
@@ -476,7 +483,7 @@ Boy that was cryptic.                                                           
                                     <outlet property="delegate" destination="ySO-Fu-4Jh" id="1aq-kz-K98"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="301" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oxf-nd-9Kd">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="301" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oxf-nd-9Kd">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gmY-lW-cCJ">
                                     <size key="itemSize" width="104" height="93"/>
@@ -562,10 +569,12 @@ Boy that was cryptic.                                                           
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="COUNTER PICKS" id="flN-l3-nc8" userLabel="COUNTER PICKS">
                         <barButtonItem key="backBarButtonItem" title="COUNTER PICKS" id="BZJ-x0-GEK"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Oxf-nd-9Kd" id="gX0-Nh-5K7"/>
                         <outlet property="searchBar" destination="nuj-U9-1xH" id="Wge-8H-2kD"/>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		682166DD1B2F5E87009A2614 /* ekko.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 682166DC1B2F5E87009A2614 /* ekko.jpg */; };
+		682166DD1B2F5E87009A2614 /* Ekko.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 682166DC1B2F5E87009A2614 /* Ekko.jpg */; };
 		68B4571C1B1001D2007A826C /* Aatrox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B456FE1B1001D2007A826C /* Aatrox.jpg */; };
 		68B4571D1B1001D2007A826C /* Ahri.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B456FF1B1001D2007A826C /* Ahri.jpg */; };
 		68B4571E1B1001D2007A826C /* Akali.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68B457001B1001D2007A826C /* Akali.jpg */; };
@@ -158,6 +158,7 @@
 		68F02BE41B0FBC5F00A24651 /* scene3.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F02BE11B0FBC5F00A24651 /* scene3.png */; };
 		68F02BE71B0FDBCF00A24651 /* TableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02BE61B0FDBCF00A24651 /* TableViewController2.m */; };
 		68F02BEA1B0FDC9F00A24651 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F02BE91B0FDC9F00A24651 /* MyTableViewCell.m */; };
+		68F8C9C21B3CAEE900FBD88F /* MyCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F8C9C11B3CAEE900FBD88F /* MyCustomSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,7 +172,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		682166DC1B2F5E87009A2614 /* ekko.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ekko.jpg; sourceTree = "<group>"; };
+		682166DC1B2F5E87009A2614 /* Ekko.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ekko.jpg; sourceTree = "<group>"; };
 		68B456FE1B1001D2007A826C /* Aatrox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aatrox.jpg; sourceTree = "<group>"; };
 		68B456FF1B1001D2007A826C /* Ahri.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ahri.jpg; sourceTree = "<group>"; };
 		68B457001B1001D2007A826C /* Akali.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Akali.jpg; sourceTree = "<group>"; };
@@ -337,6 +338,8 @@
 		68F02BE61B0FDBCF00A24651 /* TableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController2.m; sourceTree = "<group>"; };
 		68F02BE81B0FDC9F00A24651 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		68F02BE91B0FDC9F00A24651 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		68F8C9C01B3CAEE900FBD88F /* MyCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCustomSegue.h; path = CollectionView/MyCustomSegue.h; sourceTree = "<group>"; };
+		68F8C9C11B3CAEE900FBD88F /* MyCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCustomSegue.m; path = CollectionView/MyCustomSegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +448,8 @@
 				68F02BA31B0FB9AA00A24651 /* Cell2.m */,
 				68F02BA41B0FB9AA00A24651 /* Cell3.h */,
 				68F02BA51B0FB9AA00A24651 /* Cell3.m */,
+				68F8C9C01B3CAEE900FBD88F /* MyCustomSegue.h */,
+				68F8C9C11B3CAEE900FBD88F /* MyCustomSegue.m */,
 				68F02BA61B0FB9AA00A24651 /* CollectionView-Info.plist */,
 				68F02BA71B0FB9AA00A24651 /* CollectionView-Prefix.pch */,
 			);
@@ -502,6 +507,7 @@
 				68B457101B1001D2007A826C /* Diana.jpg */,
 				68B457111B1001D2007A826C /* Dr.Mundo.jpg */,
 				68B457121B1001D2007A826C /* Draven.jpg */,
+				682166DC1B2F5E87009A2614 /* Ekko.jpg */,
 				68B457131B1001D2007A826C /* Elise.jpg */,
 				68B457141B1001D2007A826C /* Evelynn.jpg */,
 				68B457151B1001D2007A826C /* Ezreal.jpg */,
@@ -513,7 +519,6 @@
 				68B4571B1B1001D2007A826C /* Garen.jpg */,
 				68B4573A1B10025C007A826C /* Gragas.jpg */,
 				68B4573B1B10025C007A826C /* Gnar.jpg */,
-				682166DC1B2F5E87009A2614 /* ekko.jpg */,
 				68B4573C1B10025C007A826C /* Graves.jpg */,
 				68B4573D1B10025C007A826C /* Hecarim.jpg */,
 				68B4573E1B10025C007A826C /* Heimerdinger.jpg */,
@@ -659,9 +664,11 @@
 				TargetAttributes = {
 					68F02B701B0FB7F400A24651 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = GX3XW66RQC;
 					};
 					68F02B8C1B0FB7F400A24651 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = GX3XW66RQC;
 						TestTargetID = 68F02B701B0FB7F400A24651;
 					};
 				};
@@ -774,7 +781,7 @@
 				68B457931B100271007A826C /* Miss Fortune.jpg in Resources */,
 				68B457AC1B100271007A826C /* Singed.jpg in Resources */,
 				68B457EA1B100287007A826C /* Volibear.jpg in Resources */,
-				682166DD1B2F5E87009A2614 /* ekko.jpg in Resources */,
+				682166DD1B2F5E87009A2614 /* Ekko.jpg in Resources */,
 				68B4576D1B10025C007A826C /* Leona.jpg in Resources */,
 				68B457A31B100271007A826C /* Renekton.jpg in Resources */,
 				68B4571E1B1001D2007A826C /* Akali.jpg in Resources */,
@@ -850,6 +857,7 @@
 				68F02B7A1B0FB7F400A24651 /* AppDelegate.m in Sources */,
 				68F02B801B0FB7F400A24651 /* ViewController.m in Sources */,
 				68F02B771B0FB7F400A24651 /* main.m in Sources */,
+				68F8C9C21B3CAEE900FBD88F /* MyCustomSegue.m in Sources */,
 				68F02BB41B0FB9AA00A24651 /* DetailViewController.m in Sources */,
 				68F02BB11B0FB9AA00A24651 /* Cell3.m in Sources */,
 				68F02BE71B0FDBCF00A24651 /* TableViewController2.m in Sources */,
@@ -940,10 +948,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Destribution;
 		};
@@ -951,6 +961,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -958,6 +970,7 @@
 				INFOPLIST_FILE = loldbTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loldb.app/loldb";
 			};
 			name = Destribution;
@@ -1049,10 +1062,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1061,10 +1076,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = loldb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1072,6 +1089,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1083,6 +1102,7 @@
 				INFOPLIST_FILE = loldbTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loldb.app/loldb";
 			};
 			name = Debug;
@@ -1091,6 +1111,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1098,6 +1120,7 @@
 				INFOPLIST_FILE = loldbTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loldb.app/loldb";
 			};
 			name = Release;
